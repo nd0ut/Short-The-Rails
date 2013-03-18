@@ -1,18 +1,20 @@
 <div class="container">
   <%= form_tag '/short', :remote => true, :id => 'form-short', :class => 'form-inline' do %>
 
-     <%= content_tag :h2, 'Cut The Link' ,:id => 'form-short-heading' %>
+      <h2 id="form-short-heading">Short The Rails</h2>
 
-      <div class="input-prepend">
+      <div class="input-prepend input-append">
         <span class="add-on">http://</span>
-        <%= text_field_tag 'url', 'habr.ru', :id => 'prependedInput' %>
+        <%= text_field_tag 'url', 'google.ru', :id => 'form-short-url-field' %>
+        <span id="add-on">
+            <%= button_tag 'Short!', :class => 'btn btn-primary', :id => 'form-short-submit'%>
+        </span>
       </div>
 
-      <%= submit_tag 'Short!', :class => 'btn btn-primary' %>
-
-      <%= content_tag :div, :class => 'well', :id => 'form-short-result' do -%>
-          Hello world!
-      <% end -%>
+      <div id="form-short-result">
+        <a id="shorted-url-link" target="_blank"></a>
+        <span id="form-short-error"></span>
+      </div>
 
   <% end %>
 

@@ -1,6 +1,6 @@
 class UrlsController < ApplicationController
 	def short
-    if params[:url].nil?
+    if params[:url].nil? || params[:url].blank?
       render :json => { :error => 'Empty url' }
       return
     end
