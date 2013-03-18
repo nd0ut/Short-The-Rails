@@ -1,0 +1,20 @@
+<div class="container">
+  <%= form_tag '/short', :remote => true, :id => 'form-short', :class => 'form-inline' do %>
+
+     <%= content_tag :h2, 'Cut The Link' ,:id => 'form-short-heading' %>
+
+      <div class="input-prepend">
+        <span class="add-on">http://</span>
+        <%= text_field_tag 'url', 'habr.ru', :id => 'prependedInput' %>
+      </div>
+
+      <%= submit_tag 'Short!', :class => 'btn btn-primary' %>
+
+      <%= content_tag :div, :class => 'well', :id => 'form-short-result' do -%>
+          Hello world!
+      <% end -%>
+
+  <% end %>
+
+
+</div>
