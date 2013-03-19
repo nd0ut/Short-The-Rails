@@ -7,6 +7,8 @@ $ ->
   link = $('#form-short-result-link')
   error = $('#form-short-result-error')
 
+  $('#form-short-url-field').focus()
+
   $('#form-short').on('ajax:beforeSend', =>
     unless popup.is(':visible')
       link.html('')
