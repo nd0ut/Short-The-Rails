@@ -3,40 +3,43 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $('#form-short').on('ajax:beforeSend', =>
-    popup = $('#form-short-result')
-    link = $('#shorted-url-link')
-    error = $('#form-short-error')
+  popup = $('#form-short-result')
+  link = $('#form-short-result-link')
+  error = $('#form-short-result-error')
 
-    unless popup.is(':visible') then popup.slideDown()
+  $('#form-short').on('ajax:beforeSend', =>
+    unless popup.is(':visible')
+      link.html('')
+      error.html('')
+      popup.slideDown()
 
     return
   )
 
   $('#form-short').on('ajax:success',(data, status, xhr) =>
-    link = $('#shorted-url-link')
-    popup = $('#form-short-result')
-    error = $('#form-short-error')
-
     error.fadeOut(50)
     link.fadeOut(50)
 
     if status['error'] != undefined
-      popup.attr('class', 'alert')
-
       setTimeout((=>
+        popup.attr('class', 'alert')
         error.html(status['error'])
         error.fadeIn() \
                  ), 50)
 
     else
-      popup.attr('class', 'well')
-
       setTimeout((=>
+        popup.attr('class', 'well')
         link.attr('href', status['shorted_url'])
         link.html(status['shorted_url'])
         link.fadeIn() \
                  ), 50)
 
     return
+  )
+
+  $('#form-short-result-close').click(=>
+    error.html('')
+    link.html('')
+    popup.slideUp()
   )
