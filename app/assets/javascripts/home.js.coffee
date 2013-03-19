@@ -43,5 +43,5 @@ $ ->
   $('#form-short-result-close').click(=>
     error.html('')
     link.html('')
-    popup.slideUp()
+    popup.slideUp(=> $('#form-short-url-field').focus())
   )
