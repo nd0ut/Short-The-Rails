@@ -9,7 +9,9 @@ $ ->
 
   $('#form-short-url-field').focus()
 
-  $('#form-short').on('ajax:beforeSend', =>
+  $('#form-short').on('ajax:before', =>
+    $('#form-short-url-field-hidden').val($('#form-short-url-protocol').html() + $('#form-short-url-field').val())
+
     unless popup.is(':visible')
       link.html('')
       error.html('')

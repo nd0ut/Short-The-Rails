@@ -3,6 +3,7 @@ UrlShortener::Application.routes.draw do  # get "home/index"
   get '/short/:url' => 'urls#short', :url => /.*/
   post '/short' => 'urls#short'
 
+  post '/:code' => 'urls#unshort', :url => /.*/
   get '/:code' => 'urls#unshort', :url => /.*/
 
   # The priority is based upon order of creation:
