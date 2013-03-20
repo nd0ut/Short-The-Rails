@@ -8,6 +8,11 @@ body {
   padding-top: 40px;
 }
 
+.container {
+  position: relative;
+  width: 450px;
+}
+
 #form-short-heading {
   margin-bottom: 30px;
 }
@@ -53,3 +58,11 @@ body {
 }
 
 .btn:focus { outline: none; }
+
+.dropdown-menu {
+  top: auto;
+  min-width: auto;
+  left: 47px;
+
+  text-align: left;
+}

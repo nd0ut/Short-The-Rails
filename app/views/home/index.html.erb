@@ -4,7 +4,15 @@
       <h2 id="form-short-heading">Short The Rails</h2>
 
       <div class="input-prepend input-append">
-        <span class="add-on" id="form-short-url-protocol">http://</span>
+        <span class="btn dropdown-toggle" data-toggle="dropdown" id="form-short-url-protocol">
+          http://
+        </span>
+
+        <ul class="dropdown-menu">
+          <li><a href="#">http://</a></li>
+          <li><a href="#">https://</a></li>
+        </ul>
+
         <%= text_field_tag 'url', nil, 'type' => 'hidden', :id => 'form-short-url-field-hidden' %>
         <%= text_field_tag nil, 'google.ru', :id => 'form-short-url-field' %>
         <span id="add-on">
@@ -20,7 +28,7 @@
 
   <% end %>
 
-  <p style="text-align: center;">nd0ut &copy; 2013</p>
+  <div style="text-align: center;">nd0ut &copy; 2013</div>
 
 
 </div>
