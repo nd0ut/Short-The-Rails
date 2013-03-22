@@ -8,9 +8,10 @@
           http://
         </span>
 
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" id="dropdown-protocol">
           <li><a href="#">http://</a></li>
           <li><a href="#">https://</a></li>
+          <li><a href="#">ftp://</a></li>
         </ul>
 
         <%= text_field_tag 'url', nil, 'type' => 'hidden', :id => 'form-short-url-field-hidden' %>

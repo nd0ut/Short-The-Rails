@@ -2,15 +2,30 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$ ->
+jQuery ->
   popup = $('#form-short-result')
   link = $('#form-short-result-link')
   error = $('#form-short-result-error')
 
-  $('#form-short-url-field').focus()
+  url_field = $('#form-short-url-field')
+  url_field_hidden = $('#form-short-url-field-hidden')
+  url_field_protocol = $('#form-short-url-protocol')
+
+  url_field.focus()
+
+  url_field.keyup(=>
+    protocol = url_field.val().match(/^(http|https|ftp|mailto|magnet)(?::)(?:\/\/|\?)?(?=[a-zA-Z0-9])/ig)
+
+    if protocol
+      url_field.val(url_field.val().replace(protocol, ''))
+      url_field_protocol.html(protocol)
+  )
 
   $('#form-short').on('ajax:before', =>
-    $('#form-short-url-field-hidden').val($('#form-short-url-protocol').html() + $('#form-short-url-field').val())
+    if url_field.val().length
+      url_field_hidden.val(url_field_protocol.html().trim() + url_field.val().trim())
+    else
+      url_field_hidden.val('')
 
     unless popup.is(':visible')
       link.html('')
@@ -47,3 +62,13 @@ $ ->
     link.html('')
     popup.slideUp(=> $('#form-short-url-field').focus())
   )
+
+  $('#dropdown-protocol li a').each((index, elem) =>
+    $(elem).click(=>
+      $('#form-short-url-protocol').html(elem.innerHTML)
+      return
+    )
+    return
+  )
+
+  return

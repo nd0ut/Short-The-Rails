@@ -5,7 +5,7 @@ class UrlsController < ApplicationController
       return
     end
 
-		@url = Url.new :url => params[:url]
+		@url = Url.new :url => params[:url].strip
 		@url.save
 
 		render :json => { :url => @url.url,
