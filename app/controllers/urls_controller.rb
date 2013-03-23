@@ -5,6 +5,11 @@ class UrlsController < ApplicationController
       return
     end
 
+    unless params[:url] =~ /^(http|https|ftp|mailto|magnet)(?::)(?:\/\/|\?)?(?=[a-zA-Z0-9])/
+      render :json => { :error => 'Invalid url' }
+      return
+    end
+
 		@url = Url.new :url => params[:url].strip
 		@url.save
 
