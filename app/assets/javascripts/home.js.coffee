@@ -2,18 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-jQuery.fn.selectText = ->
-  if (document.body.createTextRange)
-    range = document.body.createTextRange()
-    range.moveToElementText(this[0])
-    range.select()
-  else if (window.getSelection)
-    selection = window.getSelection()
-    range = document.createRange()
-    range.selectNodeContents(this[0])
-    selection.removeAllRanges()
-    selection.addRange(range)
-
 jQuery ->
   popup = $('#form-short-result')
   link = $('#form-short-result-link')
@@ -24,6 +12,7 @@ jQuery ->
   url_field_protocol = $('#form-short-url-protocol')
 
   url_field.focus()
+  link.css('cursor', 'pointer')
 
   url_field.keyup(=>
     protocol = url_field.val().match(/^(http|https|ftp|mailto|magnet)(?::)(?:\/\/|\?)?(?=[a-zA-Z0-9])/ig)
@@ -40,7 +29,7 @@ jQuery ->
       url_field_hidden.val(url_field_protocol.html().trim() + url_field.attr('placeholder'))
 
     unless popup.is(':visible')
-      link.html('')
+      link.val('')
       error.html('')
       popup.slideDown()
 
@@ -61,11 +50,10 @@ jQuery ->
     else
       setTimeout((=>
         popup.attr('class', 'well')
-        link.attr('href', status['shorted_url'])
-        link.html(status['shorted_url'])
-        link.focus()
-        link.selectText()
-        link.fadeIn() \
+        link.val(status['shorted_url'])
+        link.fadeIn()
+        link.focus().select()
+        return \
                  ), 50)
 
     return
@@ -73,8 +61,12 @@ jQuery ->
 
   $('#form-short-result-close').click(=>
     error.html('')
-    link.html('')
+    link.val('')
     popup.slideUp(=> $('#form-short-url-field').focus())
+  )
+
+  link.click(->
+    window.open(link.val(), '_blank')
   )
 
   $('#dropdown-protocol li a').each((index, elem) =>
