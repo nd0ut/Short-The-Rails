@@ -1,7 +1,9 @@
 <div class="container">
   <%= form_tag '/short', :remote => true, :id => 'form-short', :class => 'form-inline row', 'autocomplete' => 'off' do %>
 
-      <h2 id="form-short-heading">Short The Rails</h2>
+      <h2 id="form-short-heading">
+        <%= link_to 'Short The Rails', root_url %>
+      </h2>
 
       <div class="input-prepend input-append">
         <span class="btn dropdown-toggle" data-toggle="dropdown" id="form-short-url-protocol">
