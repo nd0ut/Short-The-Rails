@@ -37,7 +37,7 @@ jQuery ->
     if url_field.val().length
       url_field_hidden.val(url_field_protocol.html().trim() + url_field.val().trim())
     else
-      url_field_hidden.val('')
+      url_field_hidden.val(url_field_protocol.html().trim() + url_field.attr('placeholder'))
 
     unless popup.is(':visible')
       link.html('')
@@ -63,6 +63,7 @@ jQuery ->
         popup.attr('class', 'well')
         link.attr('href', status['shorted_url'])
         link.html(status['shorted_url'])
+        link.focus()
         link.selectText()
         link.fadeIn() \
                  ), 50)

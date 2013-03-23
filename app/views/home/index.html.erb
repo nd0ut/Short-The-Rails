@@ -17,7 +17,7 @@
         </ul>
 
         <%= text_field_tag 'url', nil, 'type' => 'hidden', :id => 'form-short-url-field-hidden' %>
-        <%= text_field_tag nil, 'google.ru', :id => 'form-short-url-field' %>
+        <%= text_field_tag nil, nil, :id => 'form-short-url-field', :placeholder => 'google.ru' %>
         <span id="add-on">
             <%= button_tag 'Short!', :class => 'btn btn-primary', :id => 'form-short-submit', 'data-disable-with' => 'Wait...'%>
         </span>
