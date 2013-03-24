@@ -52,6 +52,7 @@ jQuery ->
         popup.attr('class', 'well')
         link.attr('href', status['shorted_url'])
         link.val(status['shorted_url'])
+        link.css('width', link.val().length * 8 + 'px')
         link.fadeIn()
         link.focus().select()
         return \
