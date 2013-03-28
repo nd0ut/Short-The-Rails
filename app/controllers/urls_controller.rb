@@ -1,20 +1,13 @@
 class UrlsController < ApplicationController
 	def short
-    if params[:url].nil? || params[:url].blank?
-      render :json => { :error => 'Empty url' }
-      return
+		@url = Url.create :url => params[:url].strip
+
+    if @url.errors[:url].any?
+      render :json => { :error => @url.errors[:url].first }
+    else
+      render :json => { :url => @url.url,
+                        :shorted_url => root_url + @url.code }
     end
-
-    unless params[:url] =~ /^(http|https|ftp|mailto|magnet)(?::)(?:\/\/|\?)?(?=[a-zA-Z0-9])/
-      render :json => { :error => 'Invalid url' }
-      return
-    end
-
-		@url = Url.new :url => params[:url].strip
-		@url.save
-
-		render :json => { :url => @url.url,
-                      :shorted_url => root_url + @url.code}
   end
 
   def unshort

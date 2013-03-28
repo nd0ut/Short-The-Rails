@@ -11,6 +11,8 @@ jQuery ->
   url_field_hidden = $('#form-short-url-field-hidden')
   url_field_protocol = $('#form-short-url-protocol')
 
+  timeout = 0
+
   url_field.focus()
   link.css('cursor', 'pointer')
 
@@ -31,34 +33,46 @@ jQuery ->
     unless popup.is(':visible')
       link.val('')
       error.html('')
-      popup.slideDown()
+
+    timeout = setTimeout((=>
+      popup.slideUp()
+      return
+    ), 100)
 
     return
   )
 
   $('#form-short').on('ajax:success',(data, status, xhr) =>
+    clearTimeout(timeout)
+
     error.fadeOut(50)
     link.fadeOut(50)
 
-    if status['error'] != undefined
-      setTimeout((=>
-        popup.attr('class', 'alert')
-        error.html(status['error'])
-        error.fadeIn() \
-                 ), 50)
+    setTimeout((=>
+      popup.attr('class', 'alert alert-info')
+      popup.slideDown() unless popup.is(':visible')
 
-    else
-      setTimeout((=>
-        popup.attr('class', 'well')
-        link.attr('href', status['shorted_url'])
-        link.val(status['shorted_url'])
-        link.css('width', link.val().length * 8 + 'px')
-        link.fadeIn()
-        link.focus().select()
-        return \
-                 ), 50)
+      link.attr('href', status['shorted_url'])
+      link.val(status['shorted_url'])
+      link.css('width', link.val().length * 8 + 'px')
+      link.fadeIn()
+      link.focus().select()
+      return \
+               ), 50)
 
     return
+  )
+
+  $('#form-short').on('ajax:error', (data, status, xhr) =>
+      link.hide()
+
+      setTimeout((=>
+        popup.attr('class', 'alert alert-error')
+        popup.slideDown() unless popup.is(':visible')
+
+        error.html('Timeout was reached')
+        error.fadeIn() \
+                 ), 50)
   )
 
   $('#form-short-result-close').click(=>

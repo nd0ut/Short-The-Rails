@@ -25,6 +25,8 @@ body {
 }
 
 #form-short-result {
+  height: 20px;
+
   margin-top: 25px;
   margin-bottom: 0px;
   padding: 10px;
@@ -39,7 +41,7 @@ body {
   box-shadow: none;
   border-radius: 0px;
 
-  background-color: #F5F5F5;
+  background-color: inherit;
 
   color: inherit;
   text-decoration: underline;

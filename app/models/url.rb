@@ -1,17 +1,22 @@
 class Url < ActiveRecord::Base
   attr_accessible :code, :url
-  after_validation :ensure_url_exist
 
-  validates :url, :uniqueness => true
+  after_validation :generate_code, :unless => :url_already_exist
 
-  def ensure_url_exist
-    if !self.errors[:url].any?
-      generate_code
+  validates :url, :format => {
+      :with => /^(http|https|ftp|mailto|magnet)(?::)(?:\/\/|\?)?(?=[a-zA-Z0-9])/,
+      :message => 'Invalid url format'
+  }
+
+  def url_already_exist
+    exist_url = Url.find_by_url(url)
+
+    if exist_url.nil?
+      return false
     else
-      exist_url = Url.find_by_url(url)
-      update_attribute(:code, exist_url.code)
+      write_attribute(:code, exist_url.code)
+      return true
     end
-
   end
 
   def generate_code
@@ -28,8 +33,8 @@ class Url < ActiveRecord::Base
       end
 
       if(Url.find_by_code(random_code).nil?)
-        update_attribute(:code, random_code)
-        return
+        write_attribute(:code, random_code)
+        return true
       end
 
       if ticks > 3
