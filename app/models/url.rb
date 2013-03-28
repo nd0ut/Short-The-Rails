@@ -1,7 +1,7 @@
 class Url < ActiveRecord::Base
   attr_accessible :code, :url
 
-  after_validation :generate_code, :unless => :url_already_exist
+  after_validation :generate_code_and_save, :unless => :url_already_exist
 
   validates :url, :format => {
       :with => /^(http|https|ftp|mailto|magnet)(?::)(?:\/\/|\?)?(?=[a-zA-Z0-9])/,
@@ -19,7 +19,7 @@ class Url < ActiveRecord::Base
     end
   end
 
-  def generate_code
+  def generate_code_and_save
   	chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789'
 
     length = 5
