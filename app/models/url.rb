@@ -8,6 +8,8 @@ class Url < ActiveRecord::Base
       :message => 'Invalid url format'
   }
 
+  validates :url, :uniqueness => true
+
   def url_already_exist
     exist_url = Url.find_by_url(url)
 
@@ -15,6 +17,7 @@ class Url < ActiveRecord::Base
       return false
     else
       write_attribute(:code, exist_url.code)
+      self.errors.clear
       return true
     end
   end
