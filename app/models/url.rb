@@ -1,24 +1,22 @@
 class Url < ActiveRecord::Base
   attr_accessible :code, :url
 
-  after_validation :generate_code_and_save, :unless => :url_already_exist
+  before_save :new?
 
   validates :url, :format => {
       :with => /^(http|https|ftp|mailto|magnet)(?::)(?:\/\/|\?)?(?=[a-zA-Z0-9])/,
       :message => 'Invalid url format'
   }
 
-  validates :url, :uniqueness => true
-
-  def url_already_exist
+  def new?
     exist_url = Url.find_by_url(url)
 
     if exist_url.nil?
-      return false
+      generate_code_and_save
+      return true
     else
       write_attribute(:code, exist_url.code)
-      self.errors.clear
-      return true
+      return false
     end
   end
 
