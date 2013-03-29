@@ -1,4 +1,4 @@
-UrlShortener::Application.routes.draw do  # get "home/index"
+ShortTheRails::Application.routes.draw do  # get "home/index"
 
   post '/short' => 'urls#short'
   get '/:code' => 'urls#unshort', :url => /.*/

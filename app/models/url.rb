@@ -13,10 +13,10 @@ class Url < ActiveRecord::Base
 
     if exist_url.nil?
       generate_code_and_save
-      return true
+      true
     else
       write_attribute(:code, exist_url.code)
-      return false
+      false
     end
   end
 
@@ -33,7 +33,7 @@ class Url < ActiveRecord::Base
         random_code << chars[rand(chars.size)]
       end
 
-      if(Url.find_by_code(random_code).nil?)
+      if Url.find_by_code(random_code).nil?
         write_attribute(:code, random_code)
         return true
       end
