@@ -24,7 +24,11 @@ class UrlsController < ApplicationController
   end
 
 	def short
-    @url = Url.create :url => params[:url].strip, :user_id => current_user.id
+    unless current_user.nil?
+      @url = Url.create :url => params[:url].strip, :user_id => current_user.id
+    else
+      @url = Url.create :url => params[:url].strip
+    end
 
     if @url.errors[:url].any?
       render :json => { :error => @url.errors[:url].first }
