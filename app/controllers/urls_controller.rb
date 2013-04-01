@@ -1,6 +1,22 @@
 class UrlsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:short, :unshort]
+
+  def index
+    @urls = Url.where(:user_id => current_user.id)
+
+    @urls.map! do |url|
+      url = { :original => url.url,
+              :shorted => root_url + url.code }
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @urls }
+    end
+  end
+
 	def short
-		@url = Url.create :url => params[:url].strip
+    @url = Url.create :url => params[:url].strip, :user_id => current_user.id
 
     if @url.errors[:url].any?
       render :json => { :error => @url.errors[:url].first }

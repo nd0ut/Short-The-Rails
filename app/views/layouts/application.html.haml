@@ -14,7 +14,28 @@
     / Size should be 32 x 32 pixels
     / <haml:loud> favicon_link_tag 'favicon.ico', :rel =&amp;gt; 'shortcut icon' </haml:loud>
   %body
-    = yield
+    .container
+      .navbar
+        .navbar-inner
+          .container
+            = link_to 'Short The Rails', root_url, :class => 'brand'
+            %ul.nav.pull-right
+              -unless user_signed_in?
+                %li.dropdown-toggle(data-toggle='dropdown')=link_to 'Login', '#'
+                %ul.dropdown-menu#dropdown-login
+                  %li
+                    =image_tag '/assets/vkontakte.png', :size => '16x16'
+                    =link_to 'Вконтакте', omniauth_authorize_path(:user, :vkontakte)
+              -else
+                %li
+                  %a=current_user.username
+                %li=link_to 'My links', urls_path
+                %li=link_to 'Logout', destroy_user_session_path, :method => :delete
+
+      = yield
+
+      %div{:style => "text-align: center;"}
+        nd0ut &copy; 2013
     /
       Javascripts
       \==================================================

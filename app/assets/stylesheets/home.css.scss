@@ -4,13 +4,20 @@
 
 body {
   background-color: #F5F5F5;
-  padding-bottom: 40px;
-  padding-top: 40px;
+  margin-bottom: 40px;
+  //margin-top: 80px;
+}
+
+.navbar-inner {
+  border-radius: 0px;
+  border-width: 0 0 1px;
+  position: inherit;
+  margin-bottom: 40px;
 }
 
 .container {
   position: relative;
-  width: 450px;
+  width: 600px;
 }
 
 #form-short-heading, #form-short-heading > a  {
@@ -69,15 +76,26 @@ body {
   margin: 0 auto 5px;
   width: 350px;
   text-align: center;
-  padding: 19px 29px 29px;
+  padding: 40px;
 }
 
 .btn:focus { outline: none; }
 
-.dropdown-menu {
+#dropdown-protocol {
   top: auto;
   min-width: auto;
   left: 47px;
 
   text-align: left;
+}
+
+.navbar #dropdown-login {
+  padding: 15px;
+  min-width: 100px;
+}
+
+.navbar #dropdown-login a {
+  text-decoration: none;
+  padding: 0px;
+  display: inline;
 }

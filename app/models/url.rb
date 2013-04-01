@@ -1,5 +1,5 @@
 class Url < ActiveRecord::Base
-  attr_accessible :code, :url
+  attr_accessible :code, :url, :user_id
 
   before_save :new?
 
