@@ -3,17 +3,23 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  tbody = $('#urls_table_body')
-
-  $.ajax({
-    url: '/urls.json'
-         }
-  ).done((urls) ->
-    for url in urls
-      tbody.append('<tr/>')
-
-      tr.append('<td/>').html(url.original)
-      tr.append('<td/>').html(url.shorted)
+  $('#urls_table_body .delete').each((i, item)->
+    $(item).click(->
+      bootbox.confirm("Are you sure?", (result)->
+        if result
+          $.ajax 'urls/' + $(item).attr('data-id') + '.json',
+                 type: 'delete'
+                 success: ->
+                   setTimeout(->
+                     $(item).parent().parent().fadeOut()
+                   , 100)
+                 error: ->
+                   bootbox.alert('Deleting fails')
+          return
+      )
+      return
+    )
     return
   )
   return
+

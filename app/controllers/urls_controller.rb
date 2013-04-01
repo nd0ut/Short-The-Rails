@@ -2,10 +2,11 @@ class UrlsController < ApplicationController
   before_filter :authenticate_user!, :except => [:short, :unshort]
 
   def index
-    @urls = Url.where(:user_id => current_user.id)
+    @urls = Url.find_all_by_user_id(current_user.id)
 
     @urls.map! do |url|
-      url = { :original => url.url,
+      url = { :id => url.id,
+              :original => url.url,
               :shorted => root_url + url.code }
     end
 
@@ -13,6 +14,13 @@ class UrlsController < ApplicationController
       format.html
       format.json { render :json => @urls }
     end
+  end
+
+  def destroy
+    @url = Url.find(params[:id])
+    @url.destroy
+
+    render :json => { :status => 'success'}
   end
 
 	def short

@@ -5,5 +5,10 @@
         Original link
       %th
         Shorted link
+
   %tbody#urls_table_body
-</table>
+    -@urls.each do |url|
+      %tr
+        %td=link_to url[:original], url[:original]
+        %td=link_to url[:shorted], url[:shorted]
+        %td=link_to 'Delete', '#', :class => 'delete', 'data-id' => url[:id]

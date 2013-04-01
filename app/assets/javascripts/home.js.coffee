@@ -57,6 +57,7 @@ jQuery ->
       link.css('width', link.val().length * 8 + 'px')
       link.fadeIn()
       link.focus().select()
+
       return \
                ), 50)
 

@@ -6,7 +6,7 @@ ShortTheRails::Application.routes.draw do  # get "home/index"
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  resources :urls
+  resources :urls, :only => [:index, :destroy]
 
   post '/short' => 'urls#short'
   get '/:code' => 'urls#unshort', :url => /.*/

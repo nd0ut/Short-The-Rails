@@ -17,5 +17,7 @@
 //= require twitter/bootstrap/bootstrap-popover
 //= require twitter/bootstrap/bootstrap-button
 //= require twitter/bootstrap/bootstrap-dropdown
+//= require twitter/bootstrap/bootstrap-modal
+//= require bootbox
 //= require_tree .
 
