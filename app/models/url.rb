@@ -9,7 +9,7 @@ class Url < ActiveRecord::Base
   }
 
   def new?
-    exist_url = Url.find_by_url(url)
+    exist_url = Url.where(:url => url, :user_id => user_id).first
 
     if exist_url.nil?
       generate_code_and_save

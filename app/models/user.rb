@@ -12,8 +12,19 @@ class User < ActiveRecord::Base
       user
     else
       user = User.new :uid => response.uid, :username => data.name
-      user.uid = response.uid
       user.provider = 'vkontakte'
+      user.save
+      user
+    end
+  end
+
+  def self.find_or_create_for_github(response)
+    data = response.info
+    if user = User.where(:uid => response.uid, :provider => 'github').first
+      user
+    else
+      user = User.new :uid => response.uid, :username => data.nickname
+      user.provider = 'github'
       user.save
       user
     end

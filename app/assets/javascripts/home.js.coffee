@@ -35,7 +35,7 @@ jQuery ->
       error.html('')
 
     timeout = setTimeout((=>
-      popup.slideUp()
+      popup.slideUp(10)
       return
     ), 100)
 
