@@ -9,10 +9,13 @@ jQuery ->
         if result
           $.ajax 'urls/' + $(item).attr('data-id') + '.json',
                  type: 'delete'
-                 success: ->
-                   setTimeout(->
-                     $(item).parent().parent().fadeOut()
-                   , 100)
+                 success: (data)->
+                   if data.status == 'success'
+                     setTimeout(->
+                       $(item).parent().parent().fadeOut()
+                     , 100)
+                   else if data.status == 'error'
+                     bootbox.alert('Error: ' + data.discription)
                  error: ->
                    bootbox.alert('Deleting fails')
           return

@@ -2,7 +2,7 @@ class UrlsController < ApplicationController
   before_filter :authenticate_user!, :except => [:short, :unshort]
 
   def index
-    @urls = Url.find_all_by_user_id(current_user.id)
+    @urls = current_user.urls
 
     @urls.map! do |url|
       url = { :id => url.id,
@@ -17,10 +17,13 @@ class UrlsController < ApplicationController
   end
 
   def destroy
-    @url = Url.find(params[:id])
-    @url.destroy
+    if current_user.urls.exists?(params[:id])
+      current_user.urls.find(params[:id])
+      render :json => { :status => 'success'}
+    else
+      render :json => { :status => 'error', :discription => 'you are cheater!'}
+    end
 
-    render :json => { :status => 'success'}
   end
 
 	def short
