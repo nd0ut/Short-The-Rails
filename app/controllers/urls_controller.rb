@@ -18,7 +18,7 @@ class UrlsController < ApplicationController
 
   def destroy
     if current_user.urls.exists?(params[:id])
-      current_user.urls.find(params[:id])
+      current_user.urls.find(params[:id]).destroy
       render :json => { :status => 'success'}
     else
       render :json => { :status => 'error', :discription => 'you are cheater!'}
