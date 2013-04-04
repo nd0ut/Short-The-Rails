@@ -2,9 +2,9 @@ class UrlsController < ApplicationController
   before_filter :authenticate_user!, :except => [:short, :unshort]
 
   def index
-    @urls = current_user.urls
+    @urls = current_user.urls.map!
 
-    @urls.map! do |url|
+    @urls.each do |url|
       url = { :id => url.id,
               :original => url.url,
               :shorted => root_url + url.code }
@@ -47,7 +47,7 @@ class UrlsController < ApplicationController
       return
     end
 
-    @url = Url.find_by_code(params[:code])
+    @url = Url.where(code: params[:code]).first
 
     if @url.nil?
       render :json => { :error => 'Wrong code'}

@@ -1,4 +1,8 @@
+require 'genghis'
+
 ShortTheRails::Application.routes.draw do  # get "home/index"
+  mount Genghis::Server.new, :at => '/genghis'
+
   root :to => 'home#index'
 
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks"}

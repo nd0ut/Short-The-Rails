@@ -1,4 +1,9 @@
-class Url < ActiveRecord::Base
+class Url
+  include Mongoid::Document
+  field :code, type: String
+  field :url, type: String
+  field :user_id, type: String
+
   attr_accessible :code, :url, :user_id
 
   before_save :new?
@@ -9,7 +14,8 @@ class Url < ActiveRecord::Base
   }
 
   def new?
-    exist_url = Url.where(:url => url, :user_id => user_id).first
+    exist_url = Url.where(url: url,
+                          user_id: user_id).first
 
     if exist_url.nil?
       generate_code_and_save
@@ -33,7 +39,7 @@ class Url < ActiveRecord::Base
         random_code << chars[rand(chars.size)]
       end
 
-      if Url.find_by_code(random_code).nil?
+      unless Url.where(code: random_code).exists?
         write_attribute(:code, random_code)
         return true
       end
