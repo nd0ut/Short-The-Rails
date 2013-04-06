@@ -10,7 +10,6 @@ gem 'rails'
 #gem 'pg'
 
 gem 'mongoid'
-gem 'genghisapp'
 gem 'bson_ext'
 
 gem 'thin'
@@ -31,6 +30,7 @@ end
 group :development do
   gem "erb2haml"
   gem "html2haml"
+  gem 'genghisapp'
 end
 
 gem 'jquery-rails'

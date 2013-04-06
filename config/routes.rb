@@ -1,7 +1,8 @@
-require 'genghis'
-
 ShortTheRails::Application.routes.draw do  # get "home/index"
-  mount Genghis::Server.new, :at => '/genghis'
+  if Rails.env.development?
+    require 'genghis'
+    mount Genghis::Server.new, :at => '/genghis'
+  end
 
   root :to => 'home#index'
 
