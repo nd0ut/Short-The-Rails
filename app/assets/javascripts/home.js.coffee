@@ -37,7 +37,7 @@ jQuery ->
     timeout = setTimeout((=>
       popup.slideUp(10)
       return
-    ), 100)
+    ), 250)
 
     return
   )
