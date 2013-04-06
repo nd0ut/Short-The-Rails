@@ -1,3 +1,16 @@
+production:
+  sessions:
+    default:
+      database: short_the_rails_production
+      hosts:
+        - nd0ut:enable64@linus.mongohq.com:10076/app14613018
+      options:
+        consistency: :strong
+        # In the test environment we lower the retries and retry interval to
+        # low amounts for fast failures.
+        max_retries: 1
+        retry_interval: 0
+
 development:
   # Configure available database sessions. (required)
   sessions:
