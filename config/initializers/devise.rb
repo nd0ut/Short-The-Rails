@@ -180,7 +180,7 @@ Devise.setup do |config|
   # config.encryptor = :sha512
 
   # ==> Configuration for :token_authenticatable
-  # Defines name of the authentication token params key
+  # Defines name of the au  thentication token params key
   # config.token_authentication_key = :auth_token
 
   # ==> Scopes configuration
@@ -215,7 +215,14 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :vkontakte, '3529392', 'QN6FwMsCxbWTPhce0NuK'
+  if Rails.env.production?
+    config.omniauth :vkontakte, '3529392', 'QN6FwMsCxbWTPhce0NuK'
+  end
+
+  if Rails.env.development?
+    config.omniauth :vkontakte, '3555485', 'WvKvtga361E8VBBJHxcU'
+  end
+
   config.omniauth :github, '56b08cfbaa0256e29617', '9a323c2dc6ffdb6d42d848af865663381950d0af', :scope => 'user'
 
   # ==> Warden configuration
