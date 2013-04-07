@@ -217,13 +217,15 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   if Rails.env.production?
     config.omniauth :vkontakte, '3529392', 'QN6FwMsCxbWTPhce0NuK'
+    config.omniauth :github, '4cdad50dfadf22e9e2b4', 'ac763a0cf33cf93cf315f5bdb79c70603b3f9892', :scope => 'user'
   end
 
   if Rails.env.development?
     config.omniauth :vkontakte, '3555485', 'WvKvtga361E8VBBJHxcU'
+    config.omniauth :github, '56b08cfbaa0256e29617', '9a323c2dc6ffdb6d42d848af865663381950d0af', :scope => 'user'
   end
 
-  config.omniauth :github, '56b08cfbaa0256e29617', '9a323c2dc6ffdb6d42d848af865663381950d0af', :scope => 'user'
+  config.omniauth :twitter, 'vWOFmZ2f5jP8knoML33Cg', '4j85Hy4GDdNXFBJGLend343sdnLoK82JYvFx4vScs'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
