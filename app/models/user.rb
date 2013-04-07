@@ -36,4 +36,13 @@ class User
                username: data[:nickname],
                provider: 'github').first_or_create
   end
+
+  def self.find_or_create_for_twitter(response)
+    data = response.info
+
+    User.where(uid: response.uid,
+               username: data[:nickname],
+               provider: 'twitter').first_or_create
+  end
+
 end

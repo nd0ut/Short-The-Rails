@@ -27,6 +27,9 @@
                     =image_tag '/assets/vkontakte.png', :size => '16x16'
                     =link_to 'Вконтакте', omniauth_authorize_path(:user, :vkontakte)
                   %li
+                    =image_tag '/assets/twitter.png', :size => '16x16'
+                    =link_to 'Twitter', omniauth_authorize_path(:user, :twitter)
+                  %li
                     =image_tag '/assets/github.png', :size => '16x16'
                     =link_to 'GitHub', omniauth_authorize_path(:user, :github)
               -else

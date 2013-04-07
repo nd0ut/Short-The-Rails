@@ -225,7 +225,7 @@ Devise.setup do |config|
     config.omniauth :github, '56b08cfbaa0256e29617', '9a323c2dc6ffdb6d42d848af865663381950d0af', :scope => 'user'
   end
 
-  config.omniauth :twitter, 'vWOFmZ2f5jP8knoML33Cg', '4j85Hy4GDdNXFBJGLend343sdnLoK82JYvFx4vScs'
+  config.omniauth :twitter, 'rljq6lhu1ESN0EWFlZ7B2g', 'NwW8HD1RRpJhGLWhIwj4XSNE7Sh1Ot63mNZqDx9YUM'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
