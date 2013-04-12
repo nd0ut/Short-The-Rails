@@ -31,9 +31,14 @@ group :development do
   gem "erb2haml"
   gem "html2haml"
   gem 'genghisapp'
+
+  #gem 'ruby-debug-base19x'
+  #gem 'ruby-debug-ide'
 end
 
 gem 'jquery-rails'
+gem 'jquery-validation-rails'
+gem 'bootstrap_notify', :git => "https://github.com/jclay/bootstrap-notify-gem.git"
 gem 'bootbox-rails'
 
 gem 'twitter-bootstrap-rails'

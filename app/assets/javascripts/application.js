@@ -12,12 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 // require twitter/bootstrap
 //= require twitter/bootstrap/bootstrap-tooltip
 //= require twitter/bootstrap/bootstrap-popover
 //= require twitter/bootstrap/bootstrap-button
 //= require twitter/bootstrap/bootstrap-dropdown
 //= require twitter/bootstrap/bootstrap-modal
+//= require twitter/bootstrap/bootstrap-transition
 //= require bootbox
+//= require bootstrap-notify
 //= require_tree .
 

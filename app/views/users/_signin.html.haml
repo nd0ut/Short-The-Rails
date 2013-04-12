@@ -1,0 +1,34 @@
+#sign-in-modal.modal.hide.fade{:role => 'dialog', 'tabindex' => '-1', 'aria-labelledby' => 'modal-header', 'aria-hidden' => 'true'}
+  .modal-header
+    %h3#modal-header
+      Log in
+      %button.close{'aria-hidden' => 'true', 'data-dismiss' => 'modal', 'type' => 'button'}
+        &times;
+
+  .modal-body
+    =form_for :user,
+              :url => user_session_path,
+              :remote => true,
+              :format => :json,
+              :html => { :class => 'form-horizontal', :id => 'sign-in-form'} do |f|
+      -#= devise_error_messages!
+
+      %div.control-group
+        %div.controls
+          = f.email_field :email, :placeholder => 'Email', :autofocus => true
+
+      %div.control-group
+        %div.controls
+          = f.password_field :password, :placeholder => 'Password'
+
+      %div.control-group
+        %button.btn{:type => 'submit'} Sign in
+
+  .modal-footer
+    .social_login_buttons
+      %div.title Войти через социальные сети
+
+      - User.omniauth_providers.each do |provider|
+        = link_to omniauth_authorize_path(:user, provider) do
+          = button_tag nil, :class => provider.to_s do
+            = nil

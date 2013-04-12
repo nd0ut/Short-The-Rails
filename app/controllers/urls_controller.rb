@@ -17,7 +17,7 @@ class UrlsController < ApplicationController
   end
 
   def destroy
-    if current_user.urls.exists?(params[:id])
+    if current_user.urls.where(id: params[:id]).exists?
       current_user.urls.find(params[:id]).destroy
       render :json => { :status => 'success'}
     else

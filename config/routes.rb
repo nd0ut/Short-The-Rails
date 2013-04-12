@@ -1,15 +1,16 @@
 ShortTheRails::Application.routes.draw do  # get "home/index"
   if Rails.env.development?
     require 'genghis'
-    mount Genghis::Server.new, :at => '/genghis'
+    mount Genghis::Server.new, :at => '/db'
   end
 
   root :to => 'home#index'
 
-  devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
-  devise_scope :user do
-    delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
-  end
+  devise_for :users, :controllers => {
+      :omniauth_callbacks => "users/omniauth_callbacks",
+      :registrations => 'users/registrations',
+      :sessions => 'users/sessions'
+  }
 
   resources :urls, :only => [:index, :destroy]
 
