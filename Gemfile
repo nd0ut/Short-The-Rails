@@ -48,5 +48,3 @@ gem 'omniauth'
 gem 'omniauth-vkontakte'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
-
-gem 'activeadmin'
