@@ -30,7 +30,6 @@ end
 group :development do
   gem "erb2haml"
   gem "html2haml"
-  gem 'genghisapp'
 
   #gem 'ruby-debug-base19x'
   #gem 'ruby-debug-ide'
@@ -49,3 +48,5 @@ gem 'omniauth'
 gem 'omniauth-vkontakte'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
+
+gem 'activeadmin'

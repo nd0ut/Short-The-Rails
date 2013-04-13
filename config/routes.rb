@@ -1,9 +1,4 @@
 ShortTheRails::Application.routes.draw do  # get "home/index"
-  if Rails.env.development?
-    require 'genghis'
-    mount Genghis::Server.new, :at => '/db'
-  end
-
   root :to => 'home#index'
 
   devise_for :users, :controllers => {
