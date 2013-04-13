@@ -42,5 +42,5 @@ jQuery ->
   sign_up_form.on('ajax:success', (data, xhr, status) ->
     if xhr.success != false
       $('#sign-up-modal').modal('hide')
-      $.remove
+      $('.navbar').html(xhr)
   )

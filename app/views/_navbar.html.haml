@@ -13,4 +13,4 @@
               =current_user.username || current_user.email
           %li=link_to 'My links', urls_path
           %li
-            =link_to('Logout', destroy_user_session_path, :remote => true, :method => :delete, :class => 'logout')
+            =link_to('Logout', destroy_user_session_path, :method => :delete)

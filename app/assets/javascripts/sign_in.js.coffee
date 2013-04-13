@@ -9,4 +9,11 @@ jQuery ->
     if xhr.success != false
       $('#sign-in-modal').modal('hide')
       $('.navbar').html(xhr)
+    else
+      $('#sign-in-form label').remove()
+      $('#sign-in-form #user_password').parent().parent().append($('<label/>', {
+        class: 'error'
+        text: 'Invalid email or password'
+      }
+      ))
   )

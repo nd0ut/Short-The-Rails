@@ -15,11 +15,12 @@
     / <haml:loud> favicon_link_tag 'favicon.ico', :rel =&amp;gt; 'shortcut icon' </haml:loud>
   %body
     .container
-      = render :partial => "/navbar", :object => @current_user
+      = render :partial => "/navbar"
       = yield
       = render "/footer"
-      = render 'users/signup'
-      = render 'users/signin'
+      - unless user_signed_in?
+        = render 'users/signup'
+        = render 'users/signin'
     /
       Javascripts
       \==================================================
