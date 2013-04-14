@@ -27,11 +27,24 @@ class User
 
   index({ email: 1 }, { unique: true, background: true })
 
-  devise :database_authenticatable, :rememberable, :trackable, :omniauthable, :registerable, :validatable
+  devise :database_authenticatable, :rememberable, :trackable, :omniauthable, :registerable
 
   attr_accessible :uid, :provider, :username, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
 
   has_many :urls
+
+  validates :username, :presence => true
+
+  validates :email,    :presence => true,
+                       :format => { :with => /@/ },
+                       :uniqueness => true,
+                       :allow_nil => true,
+                       :allow_blank => false
+
+  validates :password, :presence => true,
+                       :confirmation => true,
+                       :length => { :within => Devise.password_length }
+
 
   def self.find_or_create_for_vkontakte(response)
     data = response.info
