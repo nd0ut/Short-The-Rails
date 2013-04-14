@@ -16,7 +16,7 @@ jQuery ->
         required: true
       },
       'user[password]': {
-        minlength: 5,
+        minlength: <%= Devise.password_length.to_s[0] %>,
         required: true
       },
       'user[password_confirmation]': {
