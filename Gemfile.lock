@@ -102,12 +102,12 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.22)
-    mongo (1.8.4)
-      bson (~> 1.8.4)
-    mongoid (2.7.1)
+    mongoid (3.0.23)
       activemodel (~> 3.1)
-      mongo (~> 1.8)
+      moped (~> 1.2)
+      origin (~> 1.0)
       tzinfo (~> 0.3.22)
+    moped (1.4.5)
     multi_json (1.7.2)
     multipart-post (1.2.0)
     oauth (0.4.7)
@@ -136,6 +136,7 @@ GEM
       multi_json
       omniauth (~> 1.1.0)
       omniauth-oauth2 (~> 1.0)
+    origin (1.0.11)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -214,7 +215,7 @@ DEPENDENCIES
   html2haml
   jquery-rails
   jquery-validation-rails
-  mongoid
+  mongoid (~> 3.0.0)
   omniauth
   omniauth-github
   omniauth-twitter

@@ -9,7 +9,7 @@ gem 'rails'
 #gem 'sqlite3'
 #gem 'pg'
 
-gem 'mongoid'
+gem "mongoid", "~> 3.0.0"
 gem 'bson_ext'
 
 gem 'thin'
