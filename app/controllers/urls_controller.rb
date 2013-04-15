@@ -27,7 +27,7 @@ class UrlsController < ApplicationController
   end
 
 	def short
-    unless current_user.nil?
+    if user_signed_in?
       @url = Url.create :url => params[:url].strip, :user_id => current_user.id
     else
       @url = Url.create :url => params[:url].strip
