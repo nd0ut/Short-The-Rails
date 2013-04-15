@@ -1,21 +1,21 @@
 <% if ENV['MONGOHQ_URL'] %>
-  production:
-    sessions:
-      default:
-        uri: <%= ENV['MONGOHQ_URL'] %>
-        options:
-          skip_version_check: true
-          safe: true
+production:
+  sessions:
+    default:
+      uri: <%= ENV['MONGOHQ_URL'] %>
+      options:
+        skip_version_check: true
+        safe: true
 <% else %>
-  production:
-    sessions:
-      default:
-        database: short_the_rails_production
-        hosts:
-        - localhost:27017
-        options:
-          skip_version_check: true
-          safe: true
+production:
+  sessions:
+    default:
+      database: short_the_rails_production
+      hosts:
+      - localhost:27017
+      options:
+        skip_version_check: true
+        safe: true
 <% end %>
 
 development:
@@ -25,7 +25,6 @@ development:
       hosts:
         - localhost:27017
       options:
-
 
 
 test:
