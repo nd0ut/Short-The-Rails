@@ -38,12 +38,12 @@ class User
   validates :email,    :presence => true,
                        :format => { :with => /@/ },
                        :uniqueness => true,
-                       :allow_nil => true,
-                       :allow_blank => false
+                       :unless => :social?
 
   validates :password, :presence => true,
                        :confirmation => true,
-                       :length => { :within => Devise.password_length }
+                       :length => { :within => Devise.password_length },
+                       :unless => :social?
 
 
   def self.find_or_create_for_vkontakte(response)
@@ -68,6 +68,10 @@ class User
     User.where(uid: response.uid,
                username: data[:nickname],
                provider: 'twitter').first_or_create
+  end
+
+  def social?
+    return attribute_present?(:uid)
   end
 
 end
