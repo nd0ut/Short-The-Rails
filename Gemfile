@@ -7,29 +7,26 @@ gem 'bson_ext'
 gem 'thin'
 gem 'haml-rails'
 
+gem "angular-rails"
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
+  gem 'zurb-foundation'
+  gem 'haml_coffee_assets'
+  gem 'execjs'
 
   gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier'
 end
 
 group :development do
   gem "erb2haml"
   gem "html2haml"
-
-  #gem 'ruby-debug-base19x'
-  #gem 'ruby-debug-ide'
 end
 
 gem 'jquery-rails'
-gem 'jquery-validation-rails'
-gem 'bootstrap_notify', :git => "https://github.com/jclay/bootstrap-notify-gem.git"
-gem 'bootbox-rails'
-
-gem 'twitter-bootstrap-rails'
 
 gem 'devise'
 gem 'omniauth'

@@ -1,0 +1,26 @@
+var app = angular.module('App', []);
+
+app.config(function ($routeProvider, $locationProvider) {
+    $routeProvider
+            .when('/sign_in', {
+                templateUrl: '<%= asset_path("sign_in.html.haml") %>',
+                controller: MainCtrl
+            })
+
+            .otherwise({redirectTo: '/'});
+
+    $locationProvider.html5Mode(true);
+})
+
+var MainCtrl = function ($scope) {
+};
+
+var NavBarCtrl = function ($scope) {
+    $scope.buttons = [
+        { text: "My links", href: "links" },
+        { class: "divider" },
+        { text: "Sign in", href: "sign_in" },
+        { text: "Sign up", href: "sign_up" }
+    ];
+};
+

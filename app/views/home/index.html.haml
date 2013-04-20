@@ -1,25 +1,4 @@
-= form_tag '/short', :remote => true, :id => 'form-short', :class => 'form-inline', 'autocomplete' => 'off' do
-  .input-prepend.input-append
-    %span#form-short-url-protocol.btn.dropdown-toggle{"data-toggle" => "dropdown"}
-      http://
-
-    %ul#dropdown-protocol.dropdown-menu
-      %li
-        %a{:href => "#"} http://
-      %li
-        %a{:href => "#"} https://
-      %li
-        %a{:href => "#"} ftp://
-
-    = text_field_tag 'url', nil, 'type' => 'hidden', :id => 'form-short-url-field-hidden'
-    = text_field_tag nil, nil, :id => 'form-short-url-field', :placeholder => 'google.ru'
-
-    %span#add-on
-      = button_tag 'Short!', :class => 'btn btn-primary', :id => 'form-short-submit', 'data-disable-with' => 'Wait...'
-
-  #form-short-result
-    = text_field_tag nil, nil, :id => 'form-short-result-link', :readonly => ''
-
-    %span#form-short-result-error
-    %button#form-short-result-close.close{:type => "button"} &times;
-
+.row
+  .columns.large-6.large-centered
+    .panel
+      %div{"ng-view" => ""}

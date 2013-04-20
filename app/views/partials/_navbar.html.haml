@@ -1,0 +1,11 @@
+.row{"ng-controller" => "NavBarCtrl"}
+  .columns.large-6.large-centered.text-center
+    %nav.top-bar
+      %ul.title-area
+        %li.name
+          %h1
+            %a{:href => "#"} Short The Rails
+      %section.top-bar-section
+        %ul.right
+          %li{"ng-class" => "button.class", "ng-repeat" => "button in buttons"}
+            %a{"ng-href" => "{{button.href}}"} {{button.text}}
