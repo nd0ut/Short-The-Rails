@@ -7,7 +7,7 @@ angular.module('app.controllers').controller('SessionsCtrl', function SessionsCt
         if ( Session.signedOut ) {
             $scope.session.$save()
                 .success(function(data, status, headers, config) {
-                    $cookieStore.put('_angular_devise_user', data);
+                    $cookieStore.put('_angular_devise_user', data['user']);
                 });
         }
 

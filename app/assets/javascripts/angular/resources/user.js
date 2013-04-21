@@ -7,10 +7,8 @@ angular.module('app.resources').factory('UserSession', function UserSession($htt
     UserSession.prototype.$save = function() {
         return $http.post('/users/sign_in', {
             "user" : {
-                "username" : this.username,
                 "email" : this.email,
-                "password" : this.password,
-                "remember_me" : this.remember_me ? 1 : 0
+                "password" : this.password
             }
         });
     };
@@ -24,7 +22,7 @@ angular.module('app.resources').factory('UserSession', function UserSession($htt
 });
 
 //
-app.factory('UserRegistration', function UserRegistration($http) {
+angular.module('app.resources').factory('UserRegistration', function UserRegistration($http) {
 
     var UserRegistration = function(options) {
         angular.extend(this, options);

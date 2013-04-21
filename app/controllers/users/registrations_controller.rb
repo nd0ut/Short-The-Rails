@@ -13,12 +13,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_up(resource_name, resource)
         return render :json => {:success => true,
-                                :content => resource }
+                                :user => resource }
       end
     else
       clean_up_passwords resource
       return render :json => {:success => false,
-                              :content => resource.errors }
+                              :errors => resource.errors }
     end
   end
 

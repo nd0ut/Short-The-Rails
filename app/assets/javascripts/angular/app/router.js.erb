@@ -1,4 +1,4 @@
-app.config(function ($routeProvider, $locationProvider) {
+app.config(function ($routeProvider, $locationProvider, Session) {
     $routeProvider
         .when('/sign_in', {
             templateUrl: '<%= asset_path("sessions/new.html.erb") %>',
@@ -8,6 +8,10 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/sign_up', {
             templateUrl: '<%= asset_path("registrations/new.html.erb") %>',
             controller: 'RegistrationsCtrl'
+        })
+
+        .when('/sign_out', function () {
+
         })
 
         .otherwise({redirectTo: '/'});
