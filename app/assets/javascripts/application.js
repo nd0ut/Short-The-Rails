@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular/index
+//= require angular/manifest
 //= require_tree ./angular
 
 

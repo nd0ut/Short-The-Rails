@@ -14,7 +14,14 @@ angular.module('app.controllers').controller('SessionsCtrl', function SessionsCt
     };
 
     $scope.destroy = function() {
-        $scope.session.$destroy();
+        $scope.session.$destroy()
+            .success(function(data, status, headers, config) {
+                $cookieStore.remove('_angular_devise_user');
+            });
     };
+
+    if($location.path() == '/sign_out') {
+        $scope.destroy();
+    }
 
 });

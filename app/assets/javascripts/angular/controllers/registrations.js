@@ -11,7 +11,10 @@ angular.module('app.controllers').controller('RegistrationsCtrl', function Regis
     };
 
     $scope.destroy = function() {
-        $scope.registration.$destroy();
+        $scope.registration.$destroy()
+            .success(function(data, status, headers, config) {
+                $cookieStore.remove('_angular_devise_user');
+            });
     };
 
 });
