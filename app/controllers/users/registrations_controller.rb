@@ -12,12 +12,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_up(resource_name, resource)
-        return render :partial => "/navbar", :layout => false
+        return render :json => {:success => true,
+                                :content => resource }
       end
     else
       clean_up_passwords resource
       return render :json => {:success => false,
-                              :errors => resource.errors }
+                              :content => resource.errors }
     end
   end
 

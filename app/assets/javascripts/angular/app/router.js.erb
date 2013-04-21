@@ -1,0 +1,16 @@
+app.config(function ($routeProvider, $locationProvider) {
+    $routeProvider
+        .when('/sign_in', {
+            templateUrl: '<%= asset_path("sessions/new.html.erb") %>',
+            controller: 'SessionsCtrl'
+        })
+
+        .when('/sign_up', {
+            templateUrl: '<%= asset_path("registrations/new.html.erb") %>',
+            controller: 'RegistrationsCtrl'
+        })
+
+        .otherwise({redirectTo: '/'});
+
+//    $locationProvider.html5Mode(true);
+})

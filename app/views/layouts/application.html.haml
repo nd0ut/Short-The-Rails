@@ -7,7 +7,7 @@
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
-  %body{"ng-controller" => "MainCtrl"}
+  %body
     = render 'partials/navbar'
     = yield
     = render 'partials/footer'

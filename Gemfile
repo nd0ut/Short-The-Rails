@@ -7,14 +7,12 @@ gem 'bson_ext'
 gem 'thin'
 gem 'haml-rails'
 
-gem "angular-rails"
+#gem "angular-rails"
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'zurb-foundation'
-  gem 'haml_coffee_assets'
-  gem 'execjs'
 
   gem 'therubyracer', :platforms => :ruby
 

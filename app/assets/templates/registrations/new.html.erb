@@ -1,0 +1,45 @@
+<form ng-submit="create()">
+  <div class="row">
+    <div class="columns">
+      <div class="title text-center">
+        <h1>Sign up</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large columns">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Username" ng-model="registration.username"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large columns">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Email" ng-model="registration.email"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large columns">
+      <label for="">Password</label>
+      <input type="password" id="password" name="password" placeholder="Password" ng-model="registration.password"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large columns">
+      <label for="">Password</label>
+      <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Password" ng-model="registration.password_confirmation"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large large-centered columns">
+      <button type="submit" class="button expand">Sign up</button>
+    </div>
+  </div>
+</form>
+
+
