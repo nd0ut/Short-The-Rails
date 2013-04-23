@@ -7,7 +7,9 @@ ShortTheRails::Application.routes.draw do  # get "home/index"
       :sessions => 'users/sessions'
   }
 
-  resources :urls, :only => [:index, :destroy]
+  resources :urls, :only => [:index, :create, :destroy]
+  get '/urls/:code' => 'urls#show', :url => /.*/
+
 
   post '/short' => 'urls#short'
   get '/:code' => 'urls#unshort', :url => /.*/
