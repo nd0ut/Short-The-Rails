@@ -1,4 +1,4 @@
-<form ng-submit="create()">
+<form name="sign_up" ng-submit="create()">
   <div class="row">
     <div class="columns">
       <div class="title text-center">
@@ -9,35 +9,43 @@
 
   <div class="row">
     <div class="large columns">
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" placeholder="Username" ng-model="registration.username"/>
+      <label for="username" ng-class="{'error': (sign_up.username.$invalid && sign_up.username.$dirty)}">Username</label>
+      <input ng-class="{'error': (sign_up.username.$invalid && sign_up.username.$dirty)}" type="text" id="username" name="username" placeholder="Username" ng-model="registration.username" required autofocus="autofocus">
+      <small class="error" ng-show="sign_up.username.$error.required && sign_up.username.$dirty">Cannot be blank</small>
     </div>
   </div>
 
   <div class="row">
     <div class="large columns">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Email" ng-model="registration.email"/>
+      <label for="email" ng-class="{'error': (sign_up.email.$invalid && sign_up.email.$dirty)}">Email</label>
+      <input ng-class="{'error': (sign_up.email.$invalid && sign_up.email.$dirty)}" type="email" id="email" name="email" placeholder="Email" ng-model="registration.email" required>
+      <small class="error" ng-show="sign_up.email.$error.required && sign_up.email.$dirty">Cannot be blank</small>
+      <small class="error" ng-show="sign_up.email.$error.email && sign_up.email.$dirty">Invalid format</small>
     </div>
   </div>
 
   <div class="row">
     <div class="large columns">
-      <label for="">Password</label>
-      <input type="password" id="password" name="password" placeholder="Password" ng-model="registration.password"/>
+      <label for="password" ng-class="{'error': (sign_up.password.$invalid && sign_up.password.$dirty)}">Password</label>
+      <input ng-class="{'error': (sign_up.password.$invalid && sign_up.password.$dirty)}" type="password" id="password" name="password" placeholder="Password" ng-model="registration.password" required ng-minlength="5">
+      <small class="error" ng-show="sign_up.password.$error.required && sign_up.password.$dirty">Cannot be blank</small>
+      <small class="error" ng-show="sign_up.password.$error.minlength && sign_up.password.$dirty">Too short</small>
     </div>
   </div>
 
   <div class="row">
     <div class="large columns">
-      <label for="">Password</label>
-      <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Password" ng-model="registration.password_confirmation"/>
+      <label for="password_confirmation" ng-class="{'error': (sign_up.password_confirmation.$invalid && sign_up.password_confirmation.$dirty)}">Password</label>
+      <input ng-class="{'error': (sign_up.password_confirmation.$invalid && sign_up.password_confirmation.$dirty)}" type="password" id="password_confirmation" name="password_confirmation" placeholder="Password" ng-model="registration.password_confirmation" required ng-minlength="5" same-as="registration.password">
+      <small class="error" ng-show="sign_up.password_confirmation.$error.required && sign_up.password_confirmation.$dirty">Cannot be blank</small>
+      <small class="error" ng-show="sign_up.password_confirmation.$error.minlength && sign_up.password_confirmation.$dirty">Too short</small>
+      <small class="error" ng-show="sign_up.password_confirmation.$error.sameAs && sign_up.password_confirmation.$dirty">They should be identical ones</small>
     </div>
   </div>
 
   <div class="row">
     <div class="large large-centered columns">
-      <button type="submit" class="button expand">Sign up</button>
+      <button type="submit" class="button expand" ng-class="{'disabled': sign_up.$invalid}">Sign up</button>
     </div>
   </div>
 </form>

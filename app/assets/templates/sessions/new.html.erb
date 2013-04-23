@@ -1,4 +1,4 @@
-<form ng-submit="create()">
+<form name="sign_in" ng-submit="create()" novalidate>
     <div class="row">
         <div class="columns">
             <div class="title text-center">
@@ -9,21 +9,25 @@
 
     <div class="row">
       <div class="large columns">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Email" ng-model="session.email"/>
+        <label for="email" ng-class="{'error': (sign_in.email.$invalid && sign_in.email.$dirty)}">Email</label>
+        <input ng-class="{'error': (sign_in.email.$invalid && sign_in.email.$dirty)}" type="email" id="email" name="email" placeholder="Email" ng-model="session.email" autofocus="autofocus" required>
+        <small class="error" ng-show="sign_in.email.$error.required && sign_in.email.$dirty">Cannot be blank</small>
+        <small class="error" ng-show="sign_in.email.$error.email && sign_in.email.$dirty">Invalid format</small>
       </div>
     </div>
 
     <div class="row">
       <div class="large columns">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Password" ng-model="session.password"/>
+        <label for="password" ng-class="{'error': (sign_in.password.$invalid && sign_in.password.$dirty)}">Password</label>
+        <input ng-class="{'error': (sign_in.password.$invalid && sign_in.password.$dirty)}" type="password" id="password" name="password" placeholder="Password" ng-model="session.password" required>
+        <small class="error" ng-show="sign_in.password.$error.required && sign_in.password.$dirty">Cannot be blank</small>
+        <small class="error" ng-show="sign_in.password.$error.minlength && sign_in.password.$dirty">Too short</small>
       </div>
     </div>
 
   <div class="row">
     <div class="large large-centered columns">
-      <button type="submit" class="button expand">Sign up</button>
+      <button type="submit" class="button expand" ng-class="{'disabled': sign_in.$invalid}">Sign in</button>
     </div>
   </div>
 </form>

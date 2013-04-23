@@ -1,9 +1,20 @@
 angular.module('app.services').service('Session', function Session($cookieStore, UserSession, UserRegistration) {
+    this.cookieName =       '_short_the_rails_user';
+    this.railsCookieName =  '_short_the_rails_session';
 
-    this.currentUser = $cookieStore.get('_angular_devise_user');
-    this.signedIn = !!$cookieStore.get('_angular_devise_user');
-    this.signedOut = !this.signedIn;
-    this.userSession = new UserSession( { email:"foo@bar.com", password:"example"} );
-    this.userRegistration = new UserRegistration( { username: Math.floor((Math.random()*1000000)+1), email:"foo-" + Math.floor((Math.random()*10000)+1) + "@bar.com", password:"example", password_confirmation:"example" } );
+    this.update = function () {
+        this.currentUser = $cookieStore.get(this.cookieName);
+        this.signedIn = !!$cookieStore.get(this.cookieName);
+        this.signedOut = !this.signedIn;
+    }
 
+    this.update();
+
+    this.createUserSession = function () {
+        return userSession = new UserSession( { } );
+    }
+
+    this.createUserRegistration = function () {
+        return userRegistration = new UserRegistration( { } );
+    }
 });

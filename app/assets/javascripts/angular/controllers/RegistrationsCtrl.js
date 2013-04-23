@@ -1,20 +1,20 @@
 angular.module('app.controllers').controller('RegistrationsCtrl', function RegistrationsCtrl($scope, $location, $cookieStore, Session) {
 
-    $scope.registration = Session.userRegistration;
+    $scope.registration = Session.createUserRegistration();
 
     $scope.create = function() {
-        $scope.registration.$save()
+        $scope.registration.save()
             .success(function (data, status, headers, config) {
-                $cookieStore.put('_angular_devise_user', data['user']);
+                if(data.success) {
+                    $cookieStore.put(Session.cookieName, data['user']);
+                    Session.update();
+                    $location.path('/home');
+                }
+                else {
+                    console.error($scope.registration);
+                    console.error(data);
+                }
             });
 
     };
-
-    $scope.destroy = function() {
-        $scope.registration.$destroy()
-            .success(function(data, status, headers, config) {
-                $cookieStore.remove('_angular_devise_user');
-            });
-    };
-
 });
