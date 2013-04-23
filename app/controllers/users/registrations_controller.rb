@@ -1,10 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
-  def new
-    super
-  end
-
-
   def create
     build_resource
 
@@ -12,8 +7,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_up(resource_name, resource)
-        return render :json => {:success => true,
-                                :user => resource }
+        return render :json => {
+            :success => true,
+            :user => {
+                uid: resource[:uid],
+                username: resource[:username],
+                email: resource[:email],
+                provider: resource[:provider]
+            }
+        }
       end
     else
       clean_up_passwords resource
@@ -22,7 +24,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def update
-    super
-  end
 end 

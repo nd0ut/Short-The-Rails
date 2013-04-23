@@ -8,8 +8,15 @@ class Users::SessionsController < Devise::SessionsController
     scope = Devise::Mapping.find_scope!(resource_or_scope)
     resource ||= resource_or_scope
     sign_in(scope, resource) unless warden.user(scope) == resource
-    render :json => {:success => true,
-                     :user => resource}
+    render :json => {
+        :success => true,
+        :user => {
+            uid: resource[:uid],
+            username: resource[:username],
+            email: resource[:email],
+            provider: resource[:provider]
+        }
+    }
   end
 
   def destroy
