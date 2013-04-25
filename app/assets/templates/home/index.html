@@ -1,0 +1,33 @@
+<form name="short_form" ng-submit="short()">
+    <div class="row collapse">
+        <div class="small-3 large-2 columns">
+            <span class="prefix" id="protocol">{{protocol || 'http://'}}</span>
+        </div>
+
+        <div class="large-10 columns">
+            <div class="row collapse">
+                <div class="large-10 columns">
+                    <input ng-class="{'error': short_form.url.$error.required && short_form.url.$dirty}"
+                           ng-change="onUrlChange()"
+                           type="text"
+                           name="url"
+                           placeholder="google.com"
+                           autofocus="autofocus"
+                           ng-model="url.url">
+                </div>
+
+                <div class="large-2 columns">
+                    <button type="submit" class="button prefix" ng-class="{'disabled': short_form.url.$invalid}">Short!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="row" ng-show="url.shorted_url">
+    <div class="large-12 columns">
+        <div class="alert-box success">
+            <input name="shorted_url" type="text" value="{{url.shorted_url}}">
+        </div>
+    </div>
+</div>

@@ -14,9 +14,3 @@
 //= require jquery_ujs
 //= require angular/manifest
 //= require_tree ./angular
-
-
-
-
-
-

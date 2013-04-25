@@ -1,0 +1,19 @@
+@import "foundation_and_overrides";
+
+form {
+  margin: 0px;
+}
+
+div.alert-box.success > input {
+  @include alert-base;
+  @include alert-style($success-color);
+  .close { @include alert-close; }
+
+  box-shadow: none;
+  border-width: 0em;
+  margin-bottom: 0em;
+}
+
+div.alert-box.success {
+  padding-bottom: 1em;
+}

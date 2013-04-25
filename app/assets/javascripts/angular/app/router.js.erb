@@ -15,7 +15,17 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: 'SessionsCtrl'
         })
 
-        .otherwise({redirectTo: '/'});
+        .when('/my_links', {
+            templateUrl: '<%= asset_path("links/index.html") %>',
+            controller: 'MyLinksCtrl'
+        })
+
+        .when('/home', {
+            templateUrl: '<%= asset_path("home/index.html") %>',
+            controller: 'HomeCtrl'
+        })
+
+        .otherwise({redirectTo: '/home'});
 
 //    $locationProvider.html5Mode(true);
 })
