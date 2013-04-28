@@ -1,0 +1,19 @@
+<table width="100%">
+    <thead>
+        <tr>
+            <th>Original</th>
+            <th>Shorted</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="url in urls">
+            <td>
+                <a ng-href="{{url.original}}">{{url.original}}</a>
+            </td>
+            <td>
+                <a ng-href="{{url.shorted}}">{{url.shorted}}</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

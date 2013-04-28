@@ -4,23 +4,23 @@
             <ul class="title-area">
                 <li class="name">
                     <h1>
-                        <a href="/#home">Short The Rails</a>
+                        <a href="/#/home">Short The Rails</a>
                     </h1>
                 </li>
             </ul>
             <section class="top-bar-section" ng-switch="session.signedIn">
                 <ul class="right" ng-switch-when="true">
                     <li><a href="#">Logged as {{session.currentUser.username}}</a></li>
-                    <li><a href="/#links">My links</a></li>
+                    <li><a href="/#/my_links">My links</a></li>
                     <li class="divider"></li>
-                    <li><a href="/#sign_out">Logout</a></li>
+                    <li><a href="/#/sign_out">Logout</a></li>
                 </ul>
 
                 <ul class="right" ng-switch-default>
-                    <li><a href="/#links">My links</a></li>
+                    <li><a href="/#/links">My links</a></li>
                     <li class="divider"></li>
-                    <li><a href="/#sign_in">Sign in</a></li>
-                    <li><a href="/#sign_up">Sign up</a></li>
+                    <li><a href="/#/sign_in">Sign in</a></li>
+                    <li><a href="/#/sign_up">Sign up</a></li>
                 </ul>
             </section>
         </nav>

@@ -1,5 +1,5 @@
 class UrlsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:short, :unshort, :create, :show]
+  before_filter :authenticate_user!, :except => [:index, :short, :unshort, :create, :show]
 
   def index
     @urls = current_user.urls.map!
@@ -10,10 +10,7 @@ class UrlsController < ApplicationController
               :shorted => root_url + url.code }
     end
 
-    respond_to do |format|
-      format.html
-      format.json { render :json => @urls }
-    end
+    render :json => @urls
   end
 
   def show
@@ -43,6 +40,10 @@ class UrlsController < ApplicationController
   end
 
 	def create
+    if params[:url].empty?
+      return render :json => { :error => 'Empty url' }
+    end
+
     if user_signed_in?
       @url = Url.create :url => params[:url].strip, :user_id => current_user.id
     else
