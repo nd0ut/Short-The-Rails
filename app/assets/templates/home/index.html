@@ -1,7 +1,7 @@
 <form name="short_form" ng-submit="short()">
     <div class="row collapse">
         <div class="small-3 large-2 columns">
-            <span class="prefix" id="protocol">{{protocol || 'http://'}}</span>
+            <span class="prefix" id="protocol">{{protocol}}</span>
         </div>
 
         <div class="large-10 columns">
@@ -9,11 +9,12 @@
                 <div class="large-10 columns">
                     <input ng-class="{'error': short_form.url.$error.required && short_form.url.$dirty}"
                            ng-change="onUrlChange()"
+                           ng-init="protocol='http://'"
                            type="text"
                            name="url"
                            placeholder="google.com"
                            autofocus="autofocus"
-                           ng-model="url.url">
+                           ng-model="url_without_protocol">
                 </div>
 
                 <div class="large-2 columns">
