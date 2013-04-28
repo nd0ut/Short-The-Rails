@@ -1,6 +1,5 @@
 angular.module('app.services').service('Session', function Session($cookieStore, UserSession, UserRegistration) {
     this.cookieName =       '_short_the_rails_user';
-    this.railsCookieName =  '_short_the_rails_session';
 
     this.update = function () {
         this.currentUser = $cookieStore.get(this.cookieName);
