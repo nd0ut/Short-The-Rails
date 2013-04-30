@@ -1,10 +1,12 @@
 class Url
   include Mongoid::Document
+  include Mongoid::Timestamps
+
   field :code, type: String
   field :url, type: String
   field :user_id, type: String
 
-  attr_accessible :code, :url, :user_id
+  attr_accessible :code, :url, :user_id, :created_at
 
   before_save :new?
 

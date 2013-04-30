@@ -7,7 +7,9 @@ class UrlsController < ApplicationController
     @urls.each do |url|
       url = { :id => url.id,
               :original => url.url,
-              :shorted => root_url + url.code }
+              :shorted => root_url + url.code,
+              :created_at => url.created_at
+            }
     end
 
     render :json => @urls
