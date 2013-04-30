@@ -5,10 +5,10 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %title= content_for?(:title) ? yield(:title) : "Short The Rails!"
     = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
     = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
   %body
     = render 'partials/navbar'
     = yield
     = render 'partials/footer'
-    = javascript_include_tag "application"
