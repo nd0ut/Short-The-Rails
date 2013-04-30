@@ -2,14 +2,14 @@ angular.module('app.controllers').controller('HomeCtrl', function NavBarCtrl($sc
     $scope.url = new Url();
 
     $scope.short = function () {
-        var url = $scope.url.url;
+        if (!$scope.url_without_protocol) {
+            $scope.url.url = $scope.protocol +  'google.ru';
+        }
 
         $scope.url.$save(function(u) {
             if (u.error) {
                 alert(u.error);
             }
-
-            u.url = url;
         });
 
         console.log($scope.url);
