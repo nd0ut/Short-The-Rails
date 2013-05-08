@@ -1,5 +1,9 @@
-<% User.omniauth_providers.each do |provider| %>
-    <a href="<%= omniauth_authorize_path(:user, provider) %>">
-      <%= provider%>
-    </a>
-<% end %>
+<div class="social_login_buttons">
+  <div class="row">
+    <% User.omniauth_providers.each do |provider| %>
+        <a class="th" href="<%= omniauth_authorize_path(:user, provider) %>">
+          <image src="<%=asset_path "#{provider}.png"%>"></image>
+        </a>
+    <% end %>
+  </div>
+</div>
