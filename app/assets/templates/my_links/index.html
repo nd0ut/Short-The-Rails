@@ -3,16 +3,20 @@
         <tr>
             <th>Original</th>
             <th>Shorted</th>
+            <th></th>
         </tr>
     </thead>
 
     <tbody>
-        <tr ng-repeat="url in urls">
+        <tr ng-repeat="url in urls" ng-model="urls">
             <td>
                 <a ng-href="{{url.original}}">{{url.original}}</a>
             </td>
             <td>
                 <a ng-href="{{url.shorted}}">{{url.shorted}}</a>
+            </td>
+            <td>
+                <a ng-click="deleteUrl(url)">&times;</a>
             </td>
         </tr>
     </tbody>
