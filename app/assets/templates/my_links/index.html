@@ -8,7 +8,7 @@
     </thead>
 
     <tbody>
-        <tr ng-repeat="url in urls" ng-model="urls">
+        <tr ng-repeat="url in urls">
             <td>
                 <a ng-href="{{url.original}}">{{url.original}}</a>
             </td>
@@ -16,7 +16,13 @@
                 <a ng-href="{{url.shorted}}">{{url.shorted}}</a>
             </td>
             <td>
-                <a ng-click="deleteUrl(url.id)">&times;</a>
+                <a href="#" data-dropdown="delete_confirmation">&times;</a>
+
+                <ul id="delete_confirmation" class="f-dropdown" data-dropdown-content>
+                    <p>Are you sure?</p>
+                    <a ng-click="deleteUrl(url.id)" class="button small">Yes!</a>
+                    <a onclick="$(this).parent().hide();" class="button alert small">Cancel</a>
+                </ul>
             </td>
         </tr>
     </tbody>
