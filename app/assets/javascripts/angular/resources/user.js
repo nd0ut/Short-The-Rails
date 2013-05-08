@@ -12,12 +12,11 @@ angular.module('app.resources').factory('UserSession', function UserSession($htt
             }
         });
 
-        this.password = null;
+//        this.password = null;
     };
 
     UserSession.prototype.destroy = function() {
         return $http.delete('/users/sign_out');
-        delete this;
     };
 
     return UserSession;

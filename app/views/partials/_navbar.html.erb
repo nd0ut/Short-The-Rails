@@ -1,5 +1,5 @@
 <div class="row" ng-controller="NavBarCtrl" ng-init="update()">
-    <div class="columns large-6 large-centered text-center">
+    <div class="columns large-7 large-centered text-center">
         <nav class="top-bar">
             <ul class="title-area">
                 <li class="name">
@@ -8,7 +8,7 @@
                     </h1>
                 </li>
             </ul>
-            <section class="top-bar-section" ng-switch="session.signedIn">
+            <section class="top-bar-section" ng-switch="session.signedIn == true">
                 <ul class="right" ng-switch-when="true">
                     <li><a href="#">Logged as {{session.currentUser.username}}</a></li>
                     <li><a href="/#/my_links">My links</a></li>

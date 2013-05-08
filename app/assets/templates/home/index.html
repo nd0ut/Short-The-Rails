@@ -17,17 +17,28 @@
                 </div>
 
                 <div class="large-2 columns">
-                    <button type="submit" class="button prefix">Short!</button>
+                    <button type="submit"
+                            class="button postfix"
+                            ng-class="{'disabled': loading}"
+                            ng-disabled="loading">
+                        Short!
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </form>
 
-<div id="shorted" class="row" ng-show="url.shorted_url">
+<div class="row" ng-show="url.shorted_url">
     <div class="large-12 columns">
         <div class="alert-box success">
-            <input name="shorted_url" type="text" value="{{url.shorted_url}}">
+            <input name="shorted_url"
+                   type="text"
+                   value="{{url.shorted_url}}"
+                   ui-event="{ keypress : 'callback()' }"
+                   readonly
+                   autoselect>
+            <a href="#" class="close">&times;</a>
         </div>
     </div>
 </div>

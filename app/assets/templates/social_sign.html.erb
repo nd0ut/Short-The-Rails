@@ -1,0 +1,5 @@
+<% User.omniauth_providers.each do |provider| %>
+    <a href="<%= omniauth_authorize_path(:user, provider) %>">
+      <%= provider%>
+    </a>
+<% end %>

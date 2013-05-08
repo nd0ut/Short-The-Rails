@@ -1,4 +1,4 @@
-angular.module('app.controllers').controller('SessionsCtrl', function SessionsCtrl($scope, $location, $cookieStore, Session) {
+angular.module('app.controllers').controller('SessionsCtrl', function SessionsCtrl($http, $scope, $location, $cookieStore, Session) {
 
     $scope.session = Session.createUserSession();
 
@@ -30,7 +30,7 @@ angular.module('app.controllers').controller('SessionsCtrl', function SessionsCt
 
     if($location.path() == '/sign_out') {
         $scope.destroy();
-        $location.path('/home');
+        $location.path('/home').replace();
     }
 
 });

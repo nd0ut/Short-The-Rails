@@ -1,9 +1,13 @@
-angular.module('app.services').service('Session', function Session($cookieStore, UserSession, UserRegistration) {
-    this.cookieName =       '_short_the_rails_user';
+angular.module('app.services').service('Session', function Session($cookieStore, $cookies, UserSession, UserRegistration) {
+    this.cookieName = 'current_user';
 
     this.update = function () {
-        this.currentUser = $cookieStore.get(this.cookieName);
-        this.signedIn = !!$cookieStore.get(this.cookieName);
+        if($cookies[this.cookieName])
+            this.currentUser = angular.fromJson($.base64.decode($cookies[this.cookieName].replace(/(\n)/gm,"")));
+        else
+            this.currentUser = null
+
+        this.signedIn = !!this.currentUser
         this.signedOut = !this.signedIn;
     }
 

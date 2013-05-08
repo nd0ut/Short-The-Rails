@@ -1,7 +1,15 @@
 angular.module('app.controllers').controller('HomeCtrl', function NavBarCtrl($scope, Url) {
     $scope.url = new Url();
+    $scope.loading = false;
+
+    $scope.callback = function() {
+        alert('Goodbye');
+    };
 
     $scope.short = function () {
+        delete $scope.url.shorted_url;
+        $scope.loading = true;
+
         if (!$scope.url_without_protocol) {
             $scope.url.url = $scope.protocol +  'google.ru';
         }
@@ -10,6 +18,8 @@ angular.module('app.controllers').controller('HomeCtrl', function NavBarCtrl($sc
             if (u.error) {
                 alert(u.error);
             }
+
+            $scope.loading = false;
         });
 
         console.log($scope.url);

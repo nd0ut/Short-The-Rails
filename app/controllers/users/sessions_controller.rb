@@ -17,12 +17,26 @@ class Users::SessionsController < Devise::SessionsController
             provider: resource[:provider]
         }
     }
+
+    require "base64"
+    cookies[:current_user] = {
+        :value => Base64.encode64(
+            {
+                uid: current_user[:uid],
+                username: current_user[:username],
+                email: current_user[:email],
+                provider: current_user[:provider],
+            }.to_json
+        )
+    }
   end
 
   def destroy
     redirect_path = after_sign_out_path_for(resource_name)
     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
     set_flash_message :notice, :signed_out if signed_out && is_navigational_format?
+
+    cookies.delete :current_user
 
     return render :json => {:success => true }
   end

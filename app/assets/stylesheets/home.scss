@@ -4,7 +4,7 @@ form {
   margin: 0px;
 }
 
-div.alert-box.success > input {
+input[name=shorted_url] {
   @include alert-base;
   @include alert-style($success-color);
   .close { @include alert-close; }
@@ -12,8 +12,20 @@ div.alert-box.success > input {
   box-shadow: none;
   border-width: 0em;
   margin-bottom: 0em;
-}
+  height: 3em;
+  font-size: 1em;
+  text-align: center;
 
-div.alert-box.success {
-  padding-bottom: 1em;
+  &:focus {
+    @include alert-base;
+    @include alert-style($success-color);
+    .close { @include alert-close; }
+
+    box-shadow: none;
+    border-width: 0em;
+    margin-bottom: 0em;
+    height: 3em;
+    font-size: 1em;
+    text-align: center;
+  }
 }
