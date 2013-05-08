@@ -15,5 +15,3 @@
 //= require angular/manifest
 //= require jquery/manifest
 //= require_tree ./angular
-
-//$(document).foundation();

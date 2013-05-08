@@ -1,9 +1,15 @@
 <div class="social_login_buttons">
-  <div class="row">
-    <% User.omniauth_providers.each do |provider| %>
-        <a class="th" href="<%= omniauth_authorize_path(:user, provider) %>">
-          <image src="<%=asset_path "#{provider}.png"%>"></image>
-        </a>
-    <% end %>
+  <div class="row text-center">
+    <div class="large-7 columns">
+        <h6 class="title">Sign in with social networks</h6>
+    </div>
+
+    <div class="large-5 columns">
+      <% User.omniauth_providers.each do |provider| %>
+          <a class="th" href="<%= omniauth_authorize_path(:user, provider) %>">
+            <image src="<%=asset_path "#{provider}.png"%>"></image>
+          </a>
+      <% end %>
+    </div>
   </div>
 </div>
