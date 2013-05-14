@@ -24,4 +24,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def failure
+    return render :json => {:success => false,
+                            :errors => flash[:alert]}
+  end
+
 end 

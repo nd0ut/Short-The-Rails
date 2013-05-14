@@ -43,6 +43,6 @@ class Users::SessionsController < Devise::SessionsController
 
   def failure
     return render :json => {:success => false,
-                            :errors => ["Login failed."]}
+                            :errors => flash[:alert]}
   end
 end
